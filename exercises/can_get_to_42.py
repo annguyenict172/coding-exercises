@@ -78,7 +78,7 @@ def can_get_to_42(num_list):
     return solution_exists
 
 
-class TestHashTable(unittest.TestCase):
+class TestResult(unittest.TestCase):
 
     def test_solution_exists_with_40_1_3_4_20(self):
         self.assertTrue(can_get_to_42([40, 1, 3, 4, 20]))

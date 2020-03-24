@@ -1,3 +1,9 @@
+"""
+The parity of a word is 1 if there is an even number of 1s, else 0
+Ex:
+- 11001100 -> 0
+- 11100000 -> 1
+"""
 import unittest
 
 
@@ -51,7 +57,7 @@ def parity_xor(x):
     return x & 1
 
 
-class TestParity(unittest.TestCase):
+class TestResult(unittest.TestCase):
 
     def test_one_parity_brute_force(self):
         self.assertEqual(parity_brute_force(1), 1)

@@ -1,5 +1,5 @@
 """
-Find the first occurrence of k in a sorted array
+Find the first occurrence of k in a sorted array_and_string
 If k is not present, return -1
 Ex:
 [-14, -10, 2, 108, 108, 243, 285, 285, 285, 401], 108 => 3

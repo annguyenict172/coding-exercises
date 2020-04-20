@@ -11,27 +11,27 @@ import unittest
 def merge_sorted_arrays(arrays):
     final_list = []
 
-    # This is to keep track of where we at in each array
+    # This is to keep track of where we at in each array_and_string
     last_index = [0] * len(arrays)
 
-    # Initialize the min heap with the first element from each array
+    # Initialize the min heap with the first element from each array_and_string
     min_heap = [(a[0], array_index) for array_index, a in enumerate(arrays) if len(a)]
     heapq.heapify(min_heap)
 
     while len(min_heap):
-        # Get the minimum number along with the array where it comes from
+        # Get the minimum number along with the array_and_string where it comes from
         num, array_index = heapq.heappop(min_heap)
 
         final_list.append(num)
 
-        # Increment the write index for this array
+        # Increment the write index for this array_and_string
         last_index[array_index] += 1
 
-        # Check if there is any other number in this array
+        # Check if there is any other number in this array_and_string
         if last_index[array_index] == len(arrays[array_index]):
             continue
         else:
-            # If not, we will push the next number in this array into the min heap
+            # If not, we will push the next number in this array_and_string into the min heap
             next_number = arrays[array_index][last_index[array_index]]
             heapq.heappush(min_heap, (next_number, array_index))
     return final_list

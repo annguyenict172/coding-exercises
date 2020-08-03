@@ -24,7 +24,7 @@ class SearchNode:
 
 # As in the example, we have five cards: 40, 1, 3, 4, 20
 # Recursively we can break down the problem like this:
-# Is there any way to reach 42 + 20 or 42 - 20 or 42 * 20 or 42 / 20 with 40, 1, 3 and 4?
+# Is there any way to reach 42 + 20 or 42 - 20 or 42 / 20 with 40, 1, 3 and 4?
 def can_get_to_42(num_list):
     solution_exists = False
     root = SearchNode(42, num_list, None, None, None)
@@ -40,17 +40,16 @@ def can_get_to_42(num_list):
                 list_without_num = deepcopy(current_node.available_nums)
                 list_without_num.remove(num)
 
-                stack.append(
-                    SearchNode(current_node.target / num, list_without_num, '/', num, current_node)
-                )
+                if current_node.target % num == 0:
+                    stack.append(
+                        SearchNode(current_node.target / num, list_without_num, '/', num, current_node)
+                    )
+
                 stack.append(
                     SearchNode(current_node.target + num, list_without_num, '+', num, current_node)
                 )
                 stack.append(
                     SearchNode(current_node.target - num, list_without_num, '-', num, current_node)
-                )
-                stack.append(
-                    SearchNode(current_node.target * num, list_without_num, '*', num, current_node)
                 )
         else:
             # If the last number is equal to the target, that means we have found a solution
@@ -64,7 +63,6 @@ def can_get_to_42(num_list):
         reverse_operator = {
             '-': '+',
             '+': '-',
-            '*': '/',
             '/': '*'
         }
         steps = [str(int(current_node.target))]
@@ -72,8 +70,8 @@ def can_get_to_42(num_list):
             steps.append(reverse_operator[current_node.operator])
             steps.append(str(current_node.chosen_num))
             current_node = current_node.previous
-        # print('How to get to 42:')
-        # print(' '.join(steps))
+        print('How to get to 42:')
+        print(' '.join(steps))
 
     return solution_exists
 
